@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Result Card</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1, h2 {
+            color: #ffffff;
+            text-align: center;
+        }
+
+        table {
+            color: #ffffff;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            background-color: #444444;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ffffff;
+        }
+        .blank-section {
+            height: 100px; /* Adjust the height as needed */
+            background-color: #000000; /* Adjust the background color as needed */
+            width: 100%; /* Make the section span the entire width */
+            margin-bottom: 20px; /* Add some bottom margin */
+            margin-top: 300px;
+        }
+    </style>
+</head>
+<body>
+<div class="blank-section"></div>
+<h1>RESULT</h1>
+<table>
+    <tr>
+    <table>
+        <tr>
+            <td><strong>Student Name:</strong></td>
+            <td><span th:text="${result.studentcopy.studentname}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Student ID:</strong></td>
+            <td><span th:text="${result.studentcopy.studentid}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Date of Birth:</strong></td>
+            <td><span th:text="${result.studentcopy.studentdob}"></span></td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <td><strong>School Name:</strong></td>
+            <td><span th:text="${result.studentcopy.schoolname}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>School Address:</strong></td>
+            <td><span th:text="${result.studentcopy.schooladdress}"></span></td>
+        </tr>
+    </table>
+
+    <h2>SUBJECT REPORT</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Subject Name</th>
+            <th>Subject Code</th>
+            <th>Total Marks</th>
+            <th>Marks Obtained</th>
+            <th>Grade</th>
+            <th>P/F</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="subject : ${result.subjectreport}">
+            <td th:text="${subject.subjectname}"></td>
+            <td th:text="${subject.subjectcode}"></td>
+            <td th:text="${subject.obtmarks}"></td>
+            <td th:text="${subject.maxmarks}"></td>
+            <td th:text="${subject.grade}"></td>
+            <td th:text="${subject.passorfail}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table>
+        <tr>
+            <td><strong>GRAND TOTAL:</strong></td>
+            <td><span th:text="${result.Grandtotal}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Overall Grade:</strong></td>
+            <td><span th:text="${result.Overallgrade}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Overall Result:</strong></td>
+            <td><span th:text="${result.passorfail}"></span></td>
+        </tr>
+        <tr>
+            <td><strong>Attendance:</strong></td>
+            <td><span th:text="${result.Attandances}"></span></td>
+        </tr>
+    </table>
+    </tr>
+</table>
+</body>
+</html>
